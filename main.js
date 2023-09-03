@@ -12,17 +12,17 @@ const comprarInvitacion = () => {
             case "BODA":
                 precio = 2000;
                 console.log("Opción elegida: Boda");
-                console.log("Precio Basico: $" + precio);
+                console.log("Precio Básico: $" + precio);
                 break;
             case "QUINCE":
                 precio = 1500;
                 console.log("Opción elegida: Quince");
-                console.log("Precio Basico: $" + precio);
+                console.log("Precio Básico: $" + precio);
                 break;
             case "INFANTIL":
                 precio = 1000;
                 console.log("Opción elegida: Infantil");
-                console.log("Precio Basico: $" + precio);
+                console.log("Precio Básico: $" + precio);
                 break;
             default:
                 alert("No entendí tu elección. Por favor, elige entre boda, quince o infantil.");
@@ -44,7 +44,7 @@ const comprarInvitacion = () => {
                 break;
             default:
                 console.log("Opción no válida. Por favor, elige una opción válida (1, 2 o 3).");
-                continue; 
+                continue;
         }
 
         const costoTotal = precio * opcionElegida;
@@ -57,10 +57,10 @@ const comprarInvitacion = () => {
     if (subtotal > 5000) {
         const descuento = subtotal * 0.20;
         subtotal -= descuento;
-        console.log(`Descuento del 20% aplicado: -$${descuento}`);
+        console.log(`Descuento del 20% aplicado: -$${descuento}. Se aplicó un descuento de $${descuento}`);
     }
-    
-    alert("El total de tu compra es: $" + subtotal);
+
+    alert("El total de tu compra es: $" + subtotal );
 };
 
 comprarInvitacion();
