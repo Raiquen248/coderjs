@@ -5,21 +5,21 @@ const comprarInvitacion = () => {
     let seguirComprando = true;
 
     while (seguirComprando) {
-        let invitacion = prompt("¿Qué tipo de invitación deseas: boda, quince o infantil?");
+        let invitacion = prompt("¿Qué tipo de invitación deseas: Boda, Quince o Infantil?").toUpperCase();
         let precio = 0;
 
         switch (invitacion) {
-            case "boda":
+            case "BODA":
                 precio = 2000;
                 console.log("Opción elegida: Boda");
                 console.log("Precio Basico: $" + precio);
                 break;
-            case "quince":
+            case "QUINCE":
                 precio = 1500;
                 console.log("Opción elegida: Quince");
                 console.log("Precio Basico: $" + precio);
                 break;
-            case "infantil":
+            case "INFANTIL":
                 precio = 1000;
                 console.log("Opción elegida: Infantil");
                 console.log("Precio Basico: $" + precio);
