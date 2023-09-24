@@ -66,6 +66,7 @@ const comprarInvitacion = () => {
                 console.log("Has elegido la opción Premium.");
                 break;
             default:
+                alert("Opción no válida. Por favor, elige una opción solo tecleando el numero (1, 2 o 3).");
                 console.log("Opción no válida. Por favor, elige una opción válida (1, 2 o 3).");
                 continue;
         }
