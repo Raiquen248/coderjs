@@ -1,6 +1,6 @@
 alert("Bienvenid@ a Invitaciondigital.ar");
 
-// Declaración de variables
+
 let subtotal = 0;
 let invitacionesCompradas = [];
 
@@ -10,17 +10,16 @@ class Invitacion {
         this.tipo = tipo;
         this.precioBase = precioBase;
         this.opcion = opcion;
-        this.precioTotal = this.calcularPrecioTotal();
+        this.precioTotal = this.calcularPrecioTotal();      
     }
 
     calcularPrecioTotal() {
-        // Lógica para calcular el precio total según la opción elegida
-        // Puedes usar métodos para suma, resta, etc., aquí
+        
         return this.precioBase * this.opcion;
     }
 }
 
-// Función para calcular el porcentaje
+
 function calcularPorcentaje(valor, porcentaje) {
     return (valor * porcentaje) / 100;
 }
@@ -72,11 +71,14 @@ const comprarInvitacion = () => {
         }
 
         const invitacionNueva = new Invitacion(invitacion, precio, opcionElegida);
-        invitacionesCompradas.push(invitacionNueva);
+
 
         const costoTotal = invitacionNueva.precioTotal;
         subtotal += costoTotal;
         console.log(`Subtotal: $${subtotal}`);
+        alert(`Subtotal: $${subtotal}`);
+
+        invitacionesCompradas.push(invitacionNueva);
 
         seguirComprando = confirm('¿Quieres comprar otra invitación?');
     }
@@ -84,8 +86,24 @@ const comprarInvitacion = () => {
     if (subtotal > 5000) {
         const descuento = calcularPorcentaje(subtotal, 20);
         subtotal -= descuento;
+        alert(`Descuento del 20% aplicado: -$${descuento}.`)
         console.log(`Descuento del 20% aplicado: -$${descuento}. Se aplicó un descuento de $${descuento}`);
     }
+
+    const tiposDeInvitaciones = ["BODA", "QUINCE", "INFANTIL"];
+    function informarCantidadInvitacionesCompradasPorTipos(tipos) {
+        tipos.forEach((tipo) => {
+            const invitacionesCompradasTipo = invitacionesCompradas.filter((invitacion) => invitacion.tipo === tipo);
+            
+            if (invitacionesCompradasTipo.length > 0) {
+                const cantidadComprada = invitacionesCompradasTipo.length;
+                alert(`Has comprado ${cantidadComprada} invitaciones de tipo ${tipo}.`);
+            }
+        });
+    }
+    
+
+    informarCantidadInvitacionesCompradasPorTipos(tiposDeInvitaciones);
 
     // Muestra el resultado en la consola
     console.log(`El total de tu compra es: $${subtotal}`);
@@ -93,8 +111,6 @@ const comprarInvitacion = () => {
     // Muestra el resultado en una alerta
     alert(`El total de tu compra es: $${subtotal}`);
 
-
 };
 
 comprarInvitacion();
-
