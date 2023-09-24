@@ -1,7 +1,31 @@
 alert("Bienvenid@ a Invitaciondigital.ar");
 
+// Declaración de variables
+let subtotal = 0;
+let invitacionesCompradas = [];
+
+// Objeto para almacenar información de las invitaciones
+class Invitacion {
+    constructor(tipo, precioBase, opcion) {
+        this.tipo = tipo;
+        this.precioBase = precioBase;
+        this.opcion = opcion;
+        this.precioTotal = this.calcularPrecioTotal();
+    }
+
+    calcularPrecioTotal() {
+        // Lógica para calcular el precio total según la opción elegida
+        // Puedes usar métodos para suma, resta, etc., aquí
+        return this.precioBase * this.opcion;
+    }
+}
+
+// Función para calcular el porcentaje
+function calcularPorcentaje(valor, porcentaje) {
+    return (valor * porcentaje) / 100;
+}
+
 const comprarInvitacion = () => {
-    let subtotal = 0;
     let seguirComprando = true;
 
     while (seguirComprando) {
@@ -47,7 +71,10 @@ const comprarInvitacion = () => {
                 continue;
         }
 
-        const costoTotal = precio * opcionElegida;
+        const invitacionNueva = new Invitacion(invitacion, precio, opcionElegida);
+        invitacionesCompradas.push(invitacionNueva);
+
+        const costoTotal = invitacionNueva.precioTotal;
         subtotal += costoTotal;
         console.log(`Subtotal: $${subtotal}`);
 
@@ -55,12 +82,19 @@ const comprarInvitacion = () => {
     }
 
     if (subtotal > 5000) {
-        const descuento = subtotal * 0.20;
+        const descuento = calcularPorcentaje(subtotal, 20);
         subtotal -= descuento;
         console.log(`Descuento del 20% aplicado: -$${descuento}. Se aplicó un descuento de $${descuento}`);
     }
 
-    alert("El total de tu compra es: $" + subtotal );
+    // Muestra el resultado en la consola
+    console.log(`El total de tu compra es: $${subtotal}`);
+    console.log("Invitaciones compradas:", invitacionesCompradas);
+    // Muestra el resultado en una alerta
+    alert(`El total de tu compra es: $${subtotal}`);
+
+
 };
 
 comprarInvitacion();
+
