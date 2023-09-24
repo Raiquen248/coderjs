@@ -105,10 +105,10 @@ const comprarInvitacion = () => {
 
     informarCantidadInvitacionesCompradasPorTipos(tiposDeInvitaciones);
 
-    // Muestra el resultado en la consola
+    // Mostrando Resultados
     console.log(`El total de tu compra es: $${subtotal}`);
     console.log("Invitaciones compradas:", invitacionesCompradas);
-    // Muestra el resultado en una alerta
+
     alert(`El total de tu compra es: $${subtotal}`);
 
 };
