@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const subtotalElement = document.getElementById("subtotal");
     const descuentoElement = document.getElementById("descuento");
     const totalElement = document.getElementById("total");
-
+    
     let subtotal = 0;
     let invitacionesCompradas = [];
 
@@ -42,8 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         totalElement.textContent = `Total: $${subtotal}`;
+
+        guardarInvitacionesEnLocalStorage();
+
     });
 
+    
     class Invitacion {
         constructor(tipo, precioBase, opcion) {
             this.tipo = tipo;
@@ -88,9 +92,28 @@ resetBtn.addEventListener("click", () => {
 
     // Limpia el array de invitaciones compradas
     invitacionesCompradas = [];
+
+    guardarInvitacionesEnLocalStorage();
 });
 
+
+
+function guardarInvitacionesEnLocalStorage() {
+    // Convierte el array en formato JSON
+    const invitacionesJSON = JSON.stringify(invitacionesCompradas);
+    // Almacena el JSON en el localStorage
+    localStorage.setItem("invitaciones", invitacionesJSON);
+}
+function cargarInvitacionesDesdeLocalStorage() {
+    // Obtiene el JSON almacenado en el localStorage
+    const invitacionesJSON = localStorage.getItem("invitaciones");
+    // Convierte el JSON en un array
+    invitacionesCompradas = JSON.parse(invitacionesJSON) || [];
+}
+
 });
+//Donde va esto?
+cargarInvitacionesDesdeLocalStorage();
 
 
 
