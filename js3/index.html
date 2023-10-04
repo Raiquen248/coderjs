@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>3da Entrega</title>
+</head>
+    <body>
+        <h1>Compra de Invitaciones</h1>
+        <label for="tipoInvitacion">Tipo de Invitación: </label>
+        <select id="tipoInvitacion">
+            <option value="BODA">Boda</option>
+            <option value="QUINCE">Quince</option>
+            <option value="INFANTIL">Infantil</option>
+        </select><br>
+    
+        <label for="opcionInvitacion">Opción: </label>
+        <select id="opcionInvitacion">
+            <option value="1">Básica</option>
+            <option value="2">Plus</option>
+            <option value="3">Premium</option>
+        </select><br>
+    
+        <button id="comprarBtn">Comprar Invitación</button>
+    
+        <div id="tabla-invitaciones">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Precio Base</th>
+                        <th>Opción</th>
+                        <th>Precio Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-invitaciones-body">
+                    <!-- Aquí se agregarán las filas de invitaciones compradas dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    
+        <div id="subtotal">Subtotal: $0</div>
+        <div id="descuento">Descuento: $0</div>
+        <div id="total">Total: $0</div>
+        <button id="resetBtn">Reiniciar Tabla</button>
+
+        <script src="main.js"></script>
+    </body>
+</html>
