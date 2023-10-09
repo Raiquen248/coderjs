@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -55,12 +55,12 @@ th, td {
     text-align: left;
 }
 
-/* Estilos para los resultados */
+
 #subtotal, #descuento, #total {
     margin-top: 20px;
     font-weight: bold;
 }
 
 #descuento {
-    color: #d9534f; /* Rojo para el descuento */
+    color: #d9534f; 
 }

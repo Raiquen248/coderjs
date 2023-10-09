@@ -11,25 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let subtotal = 0;
     let invitacionesCompradas = [];
 
-    function actualizarCarritoEnDOM() {
-        // Borra todas las filas actuales de la tabla
-        while (tablaInvitacionesBody.firstChild) {
-            tablaInvitacionesBody.removeChild(tablaInvitacionesBody.firstChild);
-        }
-
-        // Itera sobre las invitacionesCompradas y agrega cada invitación a la tabla
-        invitacionesCompradas.forEach((invitacionNueva) => {
-            const fila = document.createElement("tr");
-            fila.innerHTML = `
-                <td>${invitacionNueva.tipo}</td>
-                <td>$${invitacionNueva.precioBase}</td>
-                <td>${invitacionNueva.opcion}</td>
-                <td>$${invitacionNueva.precioTotal}</td>
-            `;
-            tablaInvitacionesBody.appendChild(fila);
-        });
-    }
-
+    
     comprarBtn.addEventListener("click", () => {
         const invitacion = tipoInvitacion.value;
         const precioBase = obtenerPrecioBase(invitacion);
@@ -69,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
 
         guardarInvitacionesEnLocalStorage();
-        // Llama a la función para actualizar el carrito en el DOM
+       
         actualizarCarritoEnDOM();
     });
 
@@ -105,21 +87,55 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     
     function guardarInvitacionesEnLocalStorage() {
-        // Convierte el array en formato JSON
-        const invitacionesJSON = JSON.stringify(invitacionesCompradas);
+        // Crear un objeto que contenga los valores que deseas guardar
+        const datosGuardados = {
+            invitaciones: invitacionesCompradas,
+            subtotal: subtotal,
+            descuento: descuentoElement.textContent,
+            total: totalElement.textContent
+        };
+    
+        // Convierte el objeto en formato JSON
+        const datosJSON = JSON.stringify(datosGuardados);
+    
         // Almacena el JSON en el localStorage
-        localStorage.setItem("invitaciones", invitacionesJSON);
+        localStorage.setItem("datos", datosJSON);
     }
 
-    function cargarInvitacionesDesdeLocalStorage() {
-        // Obtiene el JSON almacenado en el localStorage
-        const invitacionesJSON = localStorage.getItem("invitaciones");
-        // Convierte el JSON en un array
-        invitacionesCompradas = JSON.parse(invitacionesJSON);
 
-        // Llama a la función para actualizar el carrito en el DOM
-        actualizarCarritoEnDOM();
+    function mostrarDatosDesdeLocalStorage() {
+    // Obtiene el JSON almacenado en el localStorage
+    const datosJSON = localStorage.getItem("datos");
+
+    if (datosJSON) {
+        // Convierte el JSON en un objeto
+        const datosGuardados = JSON.parse(datosJSON);
+
+        // Actualiza los elementos del DOM con los datos recuperados
+        subtotal = datosGuardados.subtotal;
+        descuentoElement.textContent = datosGuardados.descuento;
+        totalElement.textContent = datosGuardados.total;
+
+        // Borra todas las filas actuales de la tabla
+        while (tablaInvitacionesBody.firstChild) {
+            tablaInvitacionesBody.removeChild(tablaInvitacionesBody.firstChild);
+        }
+
+        // Itera sobre las invitaciones guardadas y agrega cada invitación a la tabla
+        datosGuardados.invitaciones.forEach((invitacionNueva) => {
+            const fila = document.createElement("tr");
+            fila.innerHTML = `
+                <td>${invitacionNueva.tipo}</td>
+                <td>$${invitacionNueva.precioBase}</td>
+                <td>${invitacionNueva.opcion}</td>
+                <td>$${invitacionNueva.precioTotal}</td>
+            `;
+            tablaInvitacionesBody.appendChild(fila);
+        });
     }
+}
+
+mostrarDatosDesdeLocalStorage();
 
     const resetBtn = document.getElementById("resetBtn");
 
@@ -137,7 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         guardarInvitacionesEnLocalStorage();
     });
-
-    // Cargar invitaciones desde el localStorage al cargar la página
-    cargarInvitacionesDesdeLocalStorage();
+  
 });
+
+
+
