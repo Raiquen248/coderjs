@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     
     function guardarInvitacionesEnLocalStorage() {
-        // Crear un objeto que contenga los valores que deseas guardar
+       
         const datosGuardados = {
             invitaciones: invitacionesCompradas,
             subtotal: subtotal,
@@ -95,28 +95,28 @@ document.addEventListener("DOMContentLoaded", () => {
             total: totalElement.textContent
         };
     
-        // Convierte el objeto en formato JSON
+        
         const datosJSON = JSON.stringify(datosGuardados);
     
-        // Almacena el JSON en el localStorage
+        
         localStorage.setItem("datos", datosJSON);
     }
 
 
     function mostrarDatosDesdeLocalStorage() {
-    // Obtiene el JSON almacenado en el localStorage
+    
     const datosJSON = localStorage.getItem("datos");
 
     if (datosJSON) {
-        // Convierte el JSON en un objeto
+       
         const datosGuardados = JSON.parse(datosJSON);
 
-        // Actualiza los elementos del DOM con los datos recuperados
+        
         subtotal = datosGuardados.subtotal;
         descuentoElement.textContent = datosGuardados.descuento;
         totalElement.textContent = datosGuardados.total;
 
-        // Borra todas las filas actuales de la tabla
+        
         while (tablaInvitacionesBody.firstChild) {
             tablaInvitacionesBody.removeChild(tablaInvitacionesBody.firstChild);
         }
