@@ -61,6 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Guarda los datos de las invitaciones en el almacenamiento local
         guardarInvitacionesEnLocalStorage();
 
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Agregado al carrito!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
         // Actualiza el carrito en el DOM
         actualizarCarritoEnDOM();
     });
@@ -150,17 +158,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // Agrega un evento de escucha al botón "reset" para reiniciar la compra
     const resetBtn = document.getElementById("resetBtn");
     resetBtn.addEventListener("click", () => {
-        // Borra las filas de la tabla, reinicia variables y elementos en el DOM
-        while (tablaInvitacionesBody.firstChild) {
-            tablaInvitacionesBody.removeChild(tablaInvitacionesBody.firstChild);
-        }
-        subtotal = 0;
-        descuentoElement.textContent = "Descuento: $0";
-        subtotalElement.textContent = "Subtotal: $0";
-        totalElement.textContent = "Total: $0";
-        invitacionesCompradas = [];
+    // Muestra una confirmación con SweetAlert2
+    Swal.fire({
+        title: '¿Estas Seguro?',
+        text: "¿Deseas borrar el carrito?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Borra las filas de la tabla, reinicia variables y elementos en el DOM
+            while (tablaInvitacionesBody.firstChild) {
+                tablaInvitacionesBody.removeChild(tablaInvitacionesBody.firstChild);
+            }
+            subtotal = 0;
+            descuentoElement.textContent = "Descuento: $0";
+            subtotalElement.textContent = "Subtotal: $0";
+            totalElement.textContent = "Total: $0";
+            invitacionesCompradas = [];
 
-        // Guarda la información actualizada en el almacenamiento local
-        guardarInvitacionesEnLocalStorage();
+            // Guarda la información actualizada en el almacenamiento local
+            guardarInvitacionesEnLocalStorage();
+        }
     });
+});
 });
