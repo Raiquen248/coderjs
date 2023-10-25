@@ -16,9 +16,9 @@ async function handleSubmit(event) {
     }
   }).then(response => { // Manejar la respuesta de la solicitud
     if (response.ok) { // Si la respuesta es exitosa (código de estado HTTP 2xx)
-      status.innerHTML = "Gracias por tu mail! Interesante! lo anotaré en mi maquina de escribir invisible";
+      status.innerHTML = "Gracias por tu mail! Muy interesante! lo anotaré en mi maquina de escribir invisible";
       form.reset(); // Restablecer el formulario
-    } else { // Si la respuesta no es exitosa
+    } else { 
       response.json().then(data => { // Intentar analizar el cuerpo de la respuesta como JSON
         if (Object.hasOwn(data, 'errors')) { // Comprobar si la respuesta contiene un campo 'errors'
           status.innerHTML = data["errors"].map(error => error["message"]).join(", "); // Mostrar mensajes de error
@@ -28,9 +28,9 @@ async function handleSubmit(event) {
       });
     }
   }).catch(error => { // Manejar errores de red
-    status.innerHTML = "Oops! Hay un problema para enviar el mail"; // Mensaje de error en caso de error de red
+    status.innerHTML = "Oops! Hay un problema de red para enviar el mail"; // Mensaje de error en caso de error de red
   });
 }
 
-// Agregar un "event listener" para escuchar el evento de envío del formulario y llamar a la función handleSubmit
+// Llama a la función handleSubmit
 form.addEventListener("submit", handleSubmit);
