@@ -43,6 +43,15 @@ button:hover {
     background-color: #0056b3;
 }
 
+#resetBtn {
+    background-color: #97008b;
+}
+
+#resetBtn:hover {
+    background-color: red
+}
+
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -67,3 +76,33 @@ th, td {
 #descuento {
     color: #d9534f; 
 }
+
+
+
+label {
+    display: block; /* Mostrar las etiquetas en una nueva línea */
+    margin-bottom: 5px; /* Espacio entre etiquetas y campos de entrada */
+  }
+  
+  input[type="email"],
+  input[type="text"] {
+    width: 100%; /* Ancho completo del campo de entrada */
+    padding: 10px; /* Relleno interno */
+    margin-bottom: 10px; /* Espacio entre campos de entrada */
+    border: 1px solid #ccc; /* Borde con un color gris claro */
+    border-radius: 3px; /* Bordes redondeados */
+  }
+  
+  #my-form-button {
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    padding: 10px 20px; /* Relleno interno del botón */
+    border: none; /* Sin borde */
+    border-radius: 3px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+  }
+  
+  #my-form-button:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+  }
+  

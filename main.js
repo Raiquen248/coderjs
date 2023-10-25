@@ -183,5 +183,41 @@ document.addEventListener("DOMContentLoaded", () => {
             guardarInvitacionesEnLocalStorage();
         }
     });
+    
 });
 });
+
+const resetBtn = document.getElementById("finalizarBtn");
+resetBtn.addEventListener("click", () => {
+// Muestra una confirmación con SweetAlert2
+let timerInterval
+Swal.fire({
+  background: '#fff url(https://sweetalert2.github.io/images/trees.png)',
+  backdrop: `
+  rgba(0,0,123,0.4)
+  url("https://sweetalert2.github.io/images/nyan-cat.gif")
+  left top
+  no-repeat
+`
+  ,title: 'Gracias a la IA ya tenemos tus datos bancarios $$',
+  html: ' ¡Look at the cat now! <b></b>',
+  timer: 5000,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Swal.getTimerLeft()
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+  
+})
+})

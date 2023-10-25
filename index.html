@@ -40,17 +40,29 @@
                 </tbody>
             </table>
         </div>
-    
-        <div id="subtotal">Subtotal: $0</div>
+        <div id="subtotal"></div>
+        <button id="resetBtn">Vaciar Carrito</button>
         <div>
-            <h1>Superando los 5.000 tenes 20% de descuento!</h1>        
+            <h1>+ Compras + Descuento</h1>        
         </div>
         <div id="descuento">Descuento: $0</div>
         <div id="total">Total: $0</div>
-        <button id="resetBtn">Vaciar Carrito</button>
         
+        <button id="finalizarBtn">Finalizar Compra</button>
+        
+        <form id="my-form" action="https://formspree.io/f/mjvqlajr" method="POST">
+            <label>Tu Email:</label>
+            <input type="email" name="email" />
+            <label>Dejanos tu mensaje!:</label>
+            <input type="text" name="message" />
+            <button id="my-form-button">Enviar</button>
+            <p id="my-form-status"></p>
+          </form>
+
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="main.js"></script>    
+        <script src="mail.js"></script>
     </body>
 </html>
 
