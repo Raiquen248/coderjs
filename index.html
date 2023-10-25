@@ -4,66 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Raiquen Cordoba Proyecto Final </title>
-  
+    <title>Raiquen Cordoba Proyecto Final</title>
 </head>
-    <body>
-        <h1>Compra de Invitaciones</h1>
-        <label for="tipoInvitacion">Tipo de Invitación: </label>
-        <select id="tipoInvitacion">
-            <option value="BODA">Boda</option>
-            <option value="QUINCE">Quince</option>
-            <option value="INFANTIL">Infantil</option>
-        </select><br>
-    
-        <label for="opcionInvitacion">Opción: </label>
-        <select id="opcionInvitacion">
-            <option value="1">Básica</option>
-            <option value="2">Plus</option>
-            <option value="3">Premium</option>
-        </select><br>
-    
-        <button id="comprarBtn">Agregar al Carrito</button>
-    
-        <div id="tabla-invitaciones">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Precio Base</th>
-                        <th>Opción</th>
-                        <th>Precio Total</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-invitaciones-body">
-                    <!-- invitaciones compradas dinámicamente -->
-                </tbody>
-            </table>
-        </div>
-        <div id="subtotal"></div>
-        <button id="resetBtn">Vaciar Carrito</button>
-        <div>
-            <h1>+ Compras + Descuento</h1>        
-        </div>
-        <div id="descuento">Descuento: $0</div>
-        <div id="total">Total: $0</div>
-        
-        <button id="finalizarBtn">Finalizar Compra</button>
-        
-        <form id="my-form" action="https://formspree.io/f/mjvqlajr" method="POST">
-            <label>Tu Email:</label>
-            <input type="email" name="email" />
-            <label>Dejanos tu mensaje!:</label>
-            <input type="text" name="message" />
-            <button id="my-form-button">Enviar</button>
-            <p id="my-form-status"></p>
-          </form>
+<body>
+    <h1>Compra de Invitaciones</h1>
 
+    <label for="tipoInvitacion">Tipo de Invitación:</label>
+    <select id="tipoInvitacion">
+        <option value="BODA">Boda</option>
+        <option value="QUINCE">Quince</option>
+        <option value="INFANTIL">Infantil</option>
+    </select><br>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="main.js"></script>    
-        <script src="mail.js"></script>
-    </body>
+    <label for="opcionInvitacion">Opción:</label>
+    <select id="opcionInvitacion">
+        <option value="1">Básica</option>
+        <option value="2">Plus</option>
+        <option value="3">Premium</option>
+    </select><br>
+
+    <button id="comprarBtn">Agregar al Carrito</button>
+
+    <div id="tabla-invitaciones">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Precio Base</th>
+                    <th>Opción</th>
+                    <th>Precio Total</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-invitaciones-body">
+                <!-- invitaciones compradas dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="subtotal"></div>
+    
+    <button id="resetBtn">Vaciar Carrito</button>
+
+    <div>
+        <h1>+ Compras + Descuento</h1>
+    </div>
+
+    <div id="descuento">Descuento: $0</div>
+    <div id="total">Total: $0</div>
+
+    <button id="finalizarBtn">Finalizar Compra</button>
+
+    <form id="my-form" action="https://formspree.io/f/mjvqlajr" method="POST">
+        <label>Tu Email:</label>
+        <input type="email" name="email" />
+        <label>Dejanos tu mensaje:</label>
+        <input type="text" name="message" />
+        <button id="my-form-button">Enviar</button>
+        <p id="my-form-status"></p>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="main.js"></script>
+    <script src="mail.js"></script>
+</body>
 </html>
-
-
